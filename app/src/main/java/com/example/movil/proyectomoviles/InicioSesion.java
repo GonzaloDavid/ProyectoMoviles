@@ -27,7 +27,8 @@ public class InicioSesion extends AppCompatActivity {
     }
     public void ValidarUsuarioValido(View view)
     {
-        for (int i=0;i<crearCuenta.listaUsuario.size();i++)
+        Toast.makeText(getApplicationContext(),"METODO VALIDADR "+crearCuenta.listaUsuario.size(), Toast.LENGTH_SHORT).show();
+        for (int i=0;i<crearCuenta.getListaUsuario().size()  ;i++)
         {
             if(crearCuenta.listaUsuario.get(i).correo.equals(scorreo))
             {

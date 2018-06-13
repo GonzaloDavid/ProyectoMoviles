@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">DOMOTICA "EL SUR"</string>
+    <string name="url_web">http://192.168.1.4:1337/test</string>
+    <string-array name="listaAcciones">
+        <item>Activar</item>
+        <item>Desactivar</item>
 
+    </string-array>
 
 </resources>

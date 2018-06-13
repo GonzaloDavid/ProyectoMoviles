@@ -1,7 +1,9 @@
 package com.example.movil.proyectomoviles;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class Bienvenido extends AppCompatActivity {
     CrearCuenta crearCuenta=new CrearCuenta();
@@ -16,5 +18,10 @@ public class Bienvenido extends AppCompatActivity {
     {
         nombreB=crearCuenta.getNombreBienvenido();
 
+    }
+    public void llamarAdministrar(View view)
+    {
+        Intent intent=new Intent(this,Administrar.class);
+        startActivity(intent);
     }
 }
