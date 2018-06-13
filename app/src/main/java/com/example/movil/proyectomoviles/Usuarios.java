@@ -1,8 +1,15 @@
 package com.example.movil.proyectomoviles;
 
+import java.util.ArrayList;
+
 public class Usuarios {
+
     int id;
     String nombre,edad,correo,password,confPassword;
+    ArrayList<Usuarios> listaUsuarios=new ArrayList<>();
+
+    public Usuarios() {
+    }
 
     public Usuarios(int id, String nombre, String edad, String correo, String password, String confPassword) {
         this.id = id;
@@ -60,4 +67,13 @@ public class Usuarios {
     public void setConfPassword(String confPassword) {
         this.confPassword = confPassword;
     }
+    public ArrayList<Usuarios> getListaUsuarios() {
+        return listaUsuarios;
+    }
+    public void addListaUsuario(int id, String nombre, String edad, String correo, String pass, String confpass){
+        listaUsuarios.add(new Usuarios(id,nombre,edad,correo,pass,confpass));
+
+    }
+
+
 }

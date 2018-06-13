@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class InicioSesion extends AppCompatActivity {
 
-    CrearCuenta crearCuenta=new CrearCuenta();
+    Usuarios usuarios=new Usuarios();
     EditText correo,password;
     String scorreo, spassword;
     @Override
@@ -24,17 +24,20 @@ public class InicioSesion extends AppCompatActivity {
         password=(EditText) findViewById(R.id.eiPassword);
         scorreo=correo.getText().toString();
         spassword=password.getText().toString();
+       // Toast.makeText(getApplicationContext(),"METODO OBTENER DATOS INICIO SESION: "+spassword, Toast.LENGTH_SHORT).show();
+        usuarios.addListaUsuario(1,"Gonzalo","22","davidgonzalomejia@hotmail.com","gon8529","gon8529");
     }
 
     public boolean validarUsuario()
     {
+
         boolean ban=false;
-        //Toast.makeText(getApplicationContext(),"METODO VALIDADR "+crearCuenta.listaUsuario.get(1)+"correo de inicio de secion"+scorreo, Toast.LENGTH_SHORT).show();
-        for (int i=0;i<crearCuenta.getListaUsuario().size()  ;i++)
+        Toast.makeText(getApplicationContext(),"valor de lista: "+usuarios.getListaUsuarios().size(), Toast.LENGTH_SHORT).show();
+        for (int i=0;i<usuarios.getListaUsuarios().size();i++)
         {
-            if(crearCuenta.listaUsuario.get(i).correo.equals(scorreo))
+            if(usuarios.getListaUsuarios().get(i).correo.equals(scorreo))
             {
-                if(crearCuenta.listaUsuario.get(i).password.equals(spassword))
+                if(usuarios.getListaUsuarios().get(i).password.equals(spassword))
                 {
                     ban=true;
                     return ban;
@@ -48,7 +51,7 @@ public class InicioSesion extends AppCompatActivity {
             {
             ban=false;
             }
-            Toast.makeText(getApplicationContext(),"USUARIO NO REGISTRADO", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"CORREO NO VALIDO", Toast.LENGTH_SHORT).show();
         }
 
         return ban;
@@ -56,15 +59,14 @@ public class InicioSesion extends AppCompatActivity {
     public void IngresarLogin(View view)
     {
         ObtenerDatosInicioSesion();
-        if(validarUsuario()==true)
+       if(validarUsuario()==true)
         {
             Intent intent=new Intent(this,Bienvenido.class);
             startActivity(intent);
         }else
         {
-            Toast.makeText(getApplicationContext(),"NO INGRESO VERIFIQUE USER AND PASSWORD", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"USUARIO NO REGISTRADO", Toast.LENGTH_SHORT).show();
         }
-
     }
 
 }

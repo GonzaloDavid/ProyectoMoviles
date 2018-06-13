@@ -15,7 +15,7 @@ public class ListaUsuarios extends AppCompatActivity {
 
     private ListView listUser;
     String[] arrUser;
-    CrearCuenta crearCuenta=new CrearCuenta();
+    Usuarios usuarios=new Usuarios();
 
 
     @Override
@@ -29,11 +29,12 @@ public class ListaUsuarios extends AppCompatActivity {
         onItemParaConsultar();
     }
     public void mostrarLista() {
-        Toast.makeText(getApplicationContext(), "EL VALOR DE LA VARIABLE ES " + crearCuenta.getListaUsuario().size(), Toast.LENGTH_LONG).show();
+        usuarios.addListaUsuario(1,"Gonzalo","22","davidgonzalomejia@hotmail.com","gon8529","gon8529");
+        Toast.makeText(getApplicationContext(), "EL VALOR DE LA VARIABLE ES " + usuarios.getListaUsuarios().size(), Toast.LENGTH_LONG).show();
 
-        arrUser = new String[crearCuenta.getListaUsuario().size()];
+        arrUser = new String[usuarios.getListaUsuarios().size()];
         for (int i = 0; i < arrUser.length; i++) {
-            arrUser[i] = crearCuenta.getListaUsuario().get(i).getCorreo();
+            arrUser[i] = usuarios.getListaUsuarios().get(i).getCorreo();
         }
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrUser);
         listUser.setAdapter(adaptador);

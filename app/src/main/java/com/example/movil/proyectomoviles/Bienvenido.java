@@ -16,16 +16,9 @@ public class Bienvenido extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bienvenido);
-        colocarNombreBienvenido();
-    }
-    public void colocarNombreBienvenido()
-    {
-            nombreB = "hola: "+crearCuenta.getNombreBienvenido();
-            colocar=findViewById(R.id.tvnombre);
-            colocar.setText(nombreB);
-            Toast.makeText(getApplicationContext(), "EL VALOR DE LA VARIABLE ES " + nombreB, Toast.LENGTH_LONG).show();
 
     }
+
     public void llamarAdministrar(View view)
     {
         Intent intent=new Intent(this,Administrar.class);

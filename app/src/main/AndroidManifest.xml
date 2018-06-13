@@ -23,7 +23,9 @@
         <activity android:name=".Bienvenido" />
         <activity android:name=".Administrar" />
         <activity android:name=".AdministrarAlarma" />
-        <activity android:name=".ListaUsuarios"></activity>
+        <activity android:name=".ListaUsuarios" />
+        <activity android:name=".AdministrarFoco" />
+        <activity android:name=".AdministrarPuerta"></activity>
     </application>
 
 </manifest>

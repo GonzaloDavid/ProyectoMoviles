@@ -12,8 +12,9 @@ import java.util.ArrayList;
 public class CrearCuenta extends AppCompatActivity {
 
     EditText id,nombre,edad,correo,password,confPassword;
-    ArrayList <Usuarios> listaUsuario=new ArrayList<>();
     String nombreBienvenido="";
+    Usuarios usuarios=new Usuarios();
+
 
     public void setNombreBienvenido(String nombreBienvenido) {
         this.nombreBienvenido = nombreBienvenido;
@@ -36,36 +37,14 @@ public class CrearCuenta extends AppCompatActivity {
        password=(EditText) findViewById(R.id.ePassword);
        confPassword=(EditText) findViewById(R.id.eConfirPassword);
         setNombreBienvenido(nombre.getText().toString());
-    }
-    public void llenarListaUsuarios()
-    {
-        listaUsuario.add(new Usuarios(Integer.parseInt(id.getText().toString()),nombre.getText().toString(),edad.getText().toString(),correo.getText().toString(),password.getText().toString(),confPassword.getText().toString()));
-
-        nombreBienvenido+=nombre.getText().toString();
-        setNombreBienvenido(nombreBienvenido);
-        Toast.makeText(getApplicationContext(),"USUARIO AGREGADO: "+getNombreBienvenido(), Toast.LENGTH_SHORT).show();
-
-    }
-    public void ImprimirLista()
-    {
-        Toast.makeText(getApplicationContext(),"Salio 0 :(: "+getListaUsuario().size(), Toast.LENGTH_SHORT).show();
-        for (int i=0;i<getListaUsuario().size();i++)
-        {
-            Toast.makeText(getApplicationContext(),"Imprimir lista: "+getListaUsuario().get(i).getCorreo(), Toast.LENGTH_SHORT).show();
-        }
+        usuarios.addListaUsuario(Integer.parseInt(id.getText().toString()),nombre.getText().toString(),edad.getText().toString(),correo.getText().toString(),password.getText().toString(),confPassword.getText().toString());
     }
 
-    public void llamarBienvenido(View view)
+       public void llamarInicioSesion(View view)
     {
-       // ObtenerDatos();
-       // llenarListaUsuarios();
-        listaUsuario.add(new Usuarios(1,"Gonzalo david","22","davidgonzalomejia@hotmail.com","gon8529","gon8529"));
-        ImprimirLista();
+        ObtenerDatos();
         Intent intent=new Intent(this,InicioSesion.class);
         startActivity(intent);
-    }
-    public ArrayList<Usuarios> getListaUsuario() {
-        return listaUsuario;
     }
 
 
