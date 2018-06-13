@@ -28,8 +28,8 @@ public class InicioSesion extends AppCompatActivity {
 
     public boolean validarUsuario()
     {
-        boolean ban;
-        Toast.makeText(getApplicationContext(),"METODO VALIDADR "+crearCuenta.listaUsuario.size(), Toast.LENGTH_SHORT).show();
+        boolean ban=false;
+        //Toast.makeText(getApplicationContext(),"METODO VALIDADR "+crearCuenta.listaUsuario.get(1)+"correo de inicio de secion"+scorreo, Toast.LENGTH_SHORT).show();
         for (int i=0;i<crearCuenta.getListaUsuario().size()  ;i++)
         {
             if(crearCuenta.listaUsuario.get(i).correo.equals(scorreo))
@@ -51,14 +51,14 @@ public class InicioSesion extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"USUARIO NO REGISTRADO", Toast.LENGTH_SHORT).show();
         }
 
-        return true;
+        return ban;
     }
     public void IngresarLogin(View view)
     {
         ObtenerDatosInicioSesion();
         if(validarUsuario()==true)
         {
-            Intent intent=new Intent();
+            Intent intent=new Intent(this,Bienvenido.class);
             startActivity(intent);
         }else
         {

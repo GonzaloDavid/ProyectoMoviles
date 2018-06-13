@@ -21,9 +21,7 @@ public class CrearCuenta extends AppCompatActivity {
     public String getNombreBienvenido() {
         return nombreBienvenido;
     }
-    public ArrayList<Usuarios> getListaUsuario() {
-        return listaUsuario;
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,14 +46,26 @@ public class CrearCuenta extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"USUARIO AGREGADO: "+getNombreBienvenido(), Toast.LENGTH_SHORT).show();
 
     }
+    public void ImprimirLista()
+    {
+        Toast.makeText(getApplicationContext(),"Salio 0 :(: "+getListaUsuario().size(), Toast.LENGTH_SHORT).show();
+        for (int i=0;i<getListaUsuario().size();i++)
+        {
+            Toast.makeText(getApplicationContext(),"Imprimir lista: "+getListaUsuario().get(i).getCorreo(), Toast.LENGTH_SHORT).show();
+        }
+    }
 
     public void llamarBienvenido(View view)
     {
        // ObtenerDatos();
        // llenarListaUsuarios();
         listaUsuario.add(new Usuarios(1,"Gonzalo david","22","davidgonzalomejia@hotmail.com","gon8529","gon8529"));
-        Intent intent=new Intent(this,Bienvenido.class);
+        ImprimirLista();
+        Intent intent=new Intent(this,InicioSesion.class);
         startActivity(intent);
+    }
+    public ArrayList<Usuarios> getListaUsuario() {
+        return listaUsuario;
     }
 
 
