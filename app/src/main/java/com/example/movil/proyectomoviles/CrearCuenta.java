@@ -1,5 +1,6 @@
 package com.example.movil.proyectomoviles;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ public class CrearCuenta extends AppCompatActivity {
 
     EditText id,nombre,edad,correo,password,confPassword;
     ArrayList <Usuarios> listaUsuario=new ArrayList<>();
+    String nombreBienvenido="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +31,21 @@ public class CrearCuenta extends AppCompatActivity {
        confPassword=(EditText) findViewById(R.id.eConfirPassword);
 
     }
-    public void llenarListaUsuarios(View view)
+    public void llenarListaUsuarios()
     {
         listaUsuario.add(new Usuarios(Integer.parseInt(id.getText().toString()),nombre.getText().toString(),edad.getText().toString(),correo.getText().toString(),password.getText().toString(),confPassword.getText().toString()));
-        Toast.makeText(getApplicationContext(),"USUARIO AGREGADO", Toast.LENGTH_SHORT).show();
+        nombreBienvenido=nombre.getText().toString();
+        Toast.makeText(getApplicationContext(),"USUARIO AGREGADO: "+nombreBienvenido, Toast.LENGTH_SHORT).show();
 
+    }
+    public void llamarBienvenido(View view)
+    {
+        llenarListaUsuarios();
+        Intent intent=new Intent(this,Bienvenido.class);
+        startActivity(intent);
+    }
+
+    public String getNombreBienvenido() {
+        return nombreBienvenido;
     }
 }
