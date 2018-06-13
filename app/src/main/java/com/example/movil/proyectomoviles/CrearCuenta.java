@@ -15,6 +15,15 @@ public class CrearCuenta extends AppCompatActivity {
     ArrayList <Usuarios> listaUsuario=new ArrayList<>();
     String nombreBienvenido="";
 
+    public void setNombreBienvenido(String nombreBienvenido) {
+        this.nombreBienvenido = nombreBienvenido;
+    }
+    public String getNombreBienvenido() {
+        return nombreBienvenido;
+    }
+    public ArrayList<Usuarios> getListaUsuario() {
+        return listaUsuario;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,26 +42,21 @@ public class CrearCuenta extends AppCompatActivity {
     public void llenarListaUsuarios()
     {
         listaUsuario.add(new Usuarios(Integer.parseInt(id.getText().toString()),nombre.getText().toString(),edad.getText().toString(),correo.getText().toString(),password.getText().toString(),confPassword.getText().toString()));
+
         nombreBienvenido+=nombre.getText().toString();
         setNombreBienvenido(nombreBienvenido);
         Toast.makeText(getApplicationContext(),"USUARIO AGREGADO: "+getNombreBienvenido(), Toast.LENGTH_SHORT).show();
 
     }
-    public void setNombreBienvenido(String nombreBienvenido) {
-        this.nombreBienvenido = nombreBienvenido;
-    }
-    public String getNombreBienvenido() {
-        return nombreBienvenido;
-    }
+
     public void llamarBienvenido(View view)
     {
-        ObtenerDatos();
-        llenarListaUsuarios();
+       // ObtenerDatos();
+       // llenarListaUsuarios();
+        listaUsuario.add(new Usuarios(1,"Gonzalo david","22","davidgonzalomejia@hotmail.com","gon8529","gon8529"));
         Intent intent=new Intent(this,Bienvenido.class);
         startActivity(intent);
     }
 
-    public ArrayList<Usuarios> getListaUsuario() {
-        return listaUsuario;
-    }
+
 }

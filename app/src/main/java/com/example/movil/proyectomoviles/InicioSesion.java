@@ -16,7 +16,7 @@ public class InicioSesion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
-        ObtenerDatosInicioSesion();
+
     }
     public void ObtenerDatosInicioSesion()
     {
@@ -25,8 +25,10 @@ public class InicioSesion extends AppCompatActivity {
         scorreo=correo.getText().toString();
         spassword=password.getText().toString();
     }
-    public void ValidarUsuarioValido(View view)
+
+    public boolean validarUsuario()
     {
+        boolean ban;
         Toast.makeText(getApplicationContext(),"METODO VALIDADR "+crearCuenta.listaUsuario.size(), Toast.LENGTH_SHORT).show();
         for (int i=0;i<crearCuenta.getListaUsuario().size()  ;i++)
         {
@@ -34,13 +36,35 @@ public class InicioSesion extends AppCompatActivity {
             {
                 if(crearCuenta.listaUsuario.get(i).password.equals(spassword))
                 {
-                    Intent intent=new Intent(this,Bienvenido.class);
-                    startActivity(intent);
+                    ban=true;
+                    return ban;
 
+                }else
+                {
+                    ban=false;
                 }
                 Toast.makeText(getApplicationContext(),"CONTRASEÑA INCORRECTA ", Toast.LENGTH_SHORT).show();
+            }else
+            {
+            ban=false;
             }
             Toast.makeText(getApplicationContext(),"USUARIO NO REGISTRADO", Toast.LENGTH_SHORT).show();
         }
+
+        return true;
     }
+    public void IngresarLogin(View view)
+    {
+        ObtenerDatosInicioSesion();
+        if(validarUsuario()==true)
+        {
+            Intent intent=new Intent();
+            startActivity(intent);
+        }else
+        {
+            Toast.makeText(getApplicationContext(),"NO INGRESO VERIFIQUE USER AND PASSWORD", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }
