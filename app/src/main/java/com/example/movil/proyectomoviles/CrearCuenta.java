@@ -19,7 +19,6 @@ public class CrearCuenta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_cuenta);
-        ObtenerDatos();
     }
     public void ObtenerDatos()
     {
@@ -29,24 +28,28 @@ public class CrearCuenta extends AppCompatActivity {
        correo=(EditText) findViewById(R.id.eCorreoElectronico);
        password=(EditText) findViewById(R.id.ePassword);
        confPassword=(EditText) findViewById(R.id.eConfirPassword);
-
+        setNombreBienvenido(nombre.getText().toString());
     }
     public void llenarListaUsuarios()
     {
         listaUsuario.add(new Usuarios(Integer.parseInt(id.getText().toString()),nombre.getText().toString(),edad.getText().toString(),correo.getText().toString(),password.getText().toString(),confPassword.getText().toString()));
-        nombreBienvenido=nombre.getText().toString();
-        Toast.makeText(getApplicationContext(),"USUARIO AGREGADO: "+nombreBienvenido, Toast.LENGTH_SHORT).show();
+        nombreBienvenido+=nombre.getText().toString();
+        setNombreBienvenido(nombreBienvenido);
+        Toast.makeText(getApplicationContext(),"USUARIO AGREGADO: "+getNombreBienvenido(), Toast.LENGTH_SHORT).show();
 
+    }
+    public void setNombreBienvenido(String nombreBienvenido) {
+        this.nombreBienvenido = nombreBienvenido;
+    }
+    public String getNombreBienvenido() {
+        return nombreBienvenido;
     }
     public void llamarBienvenido(View view)
     {
+        ObtenerDatos();
         llenarListaUsuarios();
         Intent intent=new Intent(this,Bienvenido.class);
         startActivity(intent);
-    }
-
-    public String getNombreBienvenido() {
-        return nombreBienvenido;
     }
 
     public ArrayList<Usuarios> getListaUsuario() {

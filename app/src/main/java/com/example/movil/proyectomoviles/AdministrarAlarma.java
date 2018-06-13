@@ -50,7 +50,6 @@ public class AdministrarAlarma extends AppCompatActivity {
         try{
             for (int i=0;i<json.length();i++)
             {
-                Toast.makeText(getApplicationContext(), "json " + json.toString(), Toast.LENGTH_LONG).show();
                 MostrarDatosAlert(json.toString());
             }
         }catch (Exception e){
@@ -124,8 +123,6 @@ public class AdministrarAlarma extends AppCompatActivity {
     public void EscogerAccionAlarma()
     {
         spinner1 = (Spinner) findViewById(R.id.spinner1);
-
-        MostrarDatosAlert(String.valueOf(spinner1.getSelectedItem()));
         crearJson(spinner1.getSelectedItem().toString());
         MostrarDatosJson();
 

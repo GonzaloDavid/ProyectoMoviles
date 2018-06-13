@@ -22,7 +22,8 @@
         <activity android:name=".CrearCuenta" />
         <activity android:name=".Bienvenido" />
         <activity android:name=".Administrar" />
-        <activity android:name=".AdministrarAlarma"></activity>
+        <activity android:name=".AdministrarAlarma" />
+        <activity android:name=".ListaUsuarios"></activity>
     </application>
 
 </manifest>
