@@ -48,4 +48,8 @@ public class CrearCuenta extends AppCompatActivity {
     public String getNombreBienvenido() {
         return nombreBienvenido;
     }
+
+    public ArrayList<Usuarios> getListaUsuario() {
+        return listaUsuario;
+    }
 }
